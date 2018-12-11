@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
+const port = 4000;
 
 const SELECT_ALL_TODO_ITEMS = 'SELECT * FROM todo';
 
@@ -21,10 +22,10 @@ connection.connect(err => {
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send('/')
+    res.send('/index')
 });
 
-app.get('/todos', (req, res) => {
+app.get('/api/todos', (req, res) => {
     connection.query(SELECT_ALL_TODO_ITEMS, (err, results) => {
         if(err) {
             return res.send(err)
@@ -37,6 +38,6 @@ app.get('/todos', (req, res) => {
     })
 })
 
-app.listen(4000, () => {
-    console.log('online')
+app.listen(port, () => {
+    console.log(`express server listen on port ${port}`)
 });

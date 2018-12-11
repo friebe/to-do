@@ -1,6 +1,17 @@
-# Basic Todo App with API and MySQL Database
 
-Start server
-> npm run start
+# Install dependencies for server
+npm install
 
-server runs on localhost:8080
+# Install dependencies for client
+npm run client-install
+
+# Run the client & server with concurrently
+npm run dev
+
+# Run the Express server only
+npm run server
+
+# Run the React client only
+npm run client
+
+# Server runs on http://localhost:4000 and client on http://localhost:3000

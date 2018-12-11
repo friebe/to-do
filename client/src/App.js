@@ -14,7 +14,7 @@ class App extends Component {
     }
 
     getTodos = () =>  {
-        fetch('http://localhost:4000/todos')
+        fetch('/api/todos')
             .then(response => response.json())
             .then(response => this.setState({ todos: response.data, isLoading: false }))
             .catch();
