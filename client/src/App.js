@@ -18,30 +18,30 @@ class App extends Component {
             .then(response => response.json())
             .then(response => this.setState({ todos: response.data, isLoading: false }))
             .catch();
-            // .then(response => console.log(response.data));
+        // .then(response => console.log(response.data));
     };
 
     addTodo = () => {
 
     };
 
-  render() {
-      const { todos, isLoading } = this.state;
+    render() {
+        const { todos, isLoading } = this.state;
 
-      if(isLoading) {
-          return <p>Loading...</p>;
-      }
+        if(isLoading) {
+            return <p>Loading...</p>;
+        }
 
         return (
-          <div className="App">
-              <ul>
-                  {todos.map(todo =>
-                      <div name={todo.id} key={todo.id}>{todo.title}</div>
-                  )}
-              </ul>
-          </div>
+            <div className="App">
+                <ul>
+                    {todos.map(todo =>
+                        <div name={todo.id} key={todo.id}>{todo.title}</div>
+                    )}
+                </ul>
+            </div>
         );
-  }
+    }
 }
 
 export default App;
