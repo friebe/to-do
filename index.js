@@ -3,7 +3,8 @@ const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
 
-const SELECT_ALL_TODO_ITEMS = 'SELECT * FROM todo'
+const SELECT_ALL_TODO_ITEMS = 'SELECT * FROM todo';
+
 const connection =  mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -20,10 +21,10 @@ connection.connect(err => {
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send('fsdf')
+    res.send('/')
 });
 
-app.get('/toDos', (req, res) => {
+app.get('/todos', (req, res) => {
     connection.query(SELECT_ALL_TODO_ITEMS, (err, results) => {
         if(err) {
             return res.send(err)

@@ -1,0 +1,14 @@
+Todo
+1.Aufgabe erstellen (title, description, dueDate, status)
+2.Eingaben Validierung
+2.Aufgabe anzeigen (dueDate farblich kennzeichnen)
+3.Aufgabe �ndern
+4.Aufgabe l�schen
+5.Paginierung
+6.Filter
+7. API (PUT,GET,POST, DELETE)
+
+=> CRUD
+
+https://github.com/ademilter/simple-react-todo-app-with-api
+https://github.com/achowba/node-mysql-crud-app
