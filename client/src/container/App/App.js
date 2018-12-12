@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -14,7 +13,7 @@ class App extends Component {
     }
 
     getTodos = () =>  {
-        fetch('/api/todos')
+        fetch('/api/todo')
             .then(response => response.json())
             .then(response => this.setState({ todos: response.data, isLoading: false }))
             .catch();
