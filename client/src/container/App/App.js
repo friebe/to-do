@@ -1,46 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'bulma/css/bulma.css';
+import InputBox from "../../component/InputBox/InputBox";
 
 class App extends Component {
 
-    state = {
-        todos: [],
-        isLoading: false,
-    };
-
-    componentDidMount() {
-        this.getTodos();
-    }
-
-    getTodos = () =>  {
-        fetch('/api/todo')
-            .then(response => response.json())
-            .then(response => this.setState({ todos: response.data, isLoading: false }))
-            .catch();
-            // .then(response => console.log(response.data));
-    };
-
-    addTodo = () => {
-
-    };
-
   render() {
-      const { todos, isLoading } = this.state;
-
-      if(isLoading) {
-          return <p>Loading...</p>;
-      }
-
-        return (
-          <div className="App">
-              <ul>
-                  {todos.map(todo =>
-                      <div name={todo.id} key={todo.id}>{todo.title}</div>
-                  )}
-              </ul>
-          </div>
-        );
+    return (
+      <div className="container">
+          <InputBox />
+      </div>
+    );
   }
 }
 
 export default App;
+
