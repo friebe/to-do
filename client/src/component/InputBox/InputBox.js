@@ -6,8 +6,6 @@ class InputBox extends Component {
     constructor() {
         super();
         this.state = {
-            // value: '',
-            // items: []
             title: '',
             description: '',
             dueDate: '',
@@ -44,7 +42,6 @@ class InputBox extends Component {
     addTodo = () => {
         const { title, description, dueDate } = this.state;
         fetch(`api/add?title=${title}&description=${description}&dueDate=${dueDate}&done=0`)
-        // .then(response => response.json())
             .then(this.getTodos)
             .catch(err => console.log(err))
     };
@@ -57,14 +54,14 @@ class InputBox extends Component {
                     <div className="card">
                         <div className="card-content">
                             <div className="field">
-                                <label className="label">Titel</label>
+                                <label className="label">Title</label>
                                 <div className="control">
                                     <input
                                         name="title"
                                         value={title}
                                         className="input"
                                         type="text"
-                                        placeholder="Text input"
+                                        placeholder="Title"
                                         onChange={this.handleChange.bind(this)}
                                     />
                                 </div>
@@ -76,31 +73,30 @@ class InputBox extends Component {
                                             className="input"
                                             name="description"
                                             type="text"
-                                            placeholder="Text input"
+                                            placeholder="description"
                                             onChange={this.handleChange.bind(this)}
                                         />
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <label className="label">Fälligkeitsdatum</label>
+                                    <label className="label">Due date</label>
                                     <div className="control">
                                         <input
                                             value={dueDate}
                                             className="input"
                                             name="dueDate"
                                             type="date"
-                                            placeholder="Text input"
+                                            placeholder="dueDate"
                                             onChange={this.handleChange.bind(this)}
                                         />
                                     </div>
                                 </div>
                             </div>
-                            <button className="button is-primary" type="submit">Absenden</button>
+                            <button className="button is-primary" type="submit">Submit</button>
                         </div>
                     </div>
                 </form>
 
-                {/*{ this.state.title }*/}
                 <DisplayItems flagisUpdate={isReadyToSubmit}/>
 
             </div>

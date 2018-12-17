@@ -4,7 +4,7 @@ const app = express();
 const mysql = require('mysql');
 const config = require('./server/config/config');
 const { getIndex } = require('./server/routes/index');
-const { getTodo, addTodo } = require('./server/routes/todo');
+const { getTodo, addTodo, deleteTodo} = require('./server/routes/todo');
 
 const db =  mysql.createConnection({
     host: config.database.host,
@@ -26,6 +26,7 @@ app.use(cors());
 app.get('/', getIndex);
 app.get('/api/todo', getTodo);
 app.get('/api/add', addTodo);
+app.get('/api/delete', deleteTodo);
 
 
 app.listen(config.app.port, () => {

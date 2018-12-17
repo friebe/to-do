@@ -20,7 +20,6 @@ class DisplayItems extends Component {
     }
 
     componentDidMount() {
-        console.log('mount');
         this.getTodos();
     }
 
@@ -40,7 +39,11 @@ class DisplayItems extends Component {
 
     deleteTodo = (e) => {
         e.preventDefault();
-        console.log(e.target.dataset.id);
+        let todoId = e.target.dataset.id;
+        fetch(`/api/delete?id=${todoId}`)
+            .then(this.getTodos)
+            .catch(err => console.log(err))
+
     };
 
     handleStatusTodo = (e) => {

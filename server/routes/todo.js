@@ -18,6 +18,14 @@ module.exports = {
         db.query(sql, (err, result) => {
             res.send('todo added');
         })
+    },
+    deleteTodo: (req,res) => {
+        const {id} = req.query;
+        let sql = `DELETE FROM todo WHERE id=${id}`;
+
+        db.query(sql, (err, result) => {
+            res.send('todo is deleted');
+        })
     }
 };
 //getTodosById, update, delete, create
