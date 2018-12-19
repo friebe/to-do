@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import DisplayItems from "../DisplayItems/DisplayItems";
+import dateTime from "./dateTime.css";
+import Datetime from "react-datetime";
+import moment from "moment";
 
 class InputBox extends Component {
 
@@ -13,41 +16,33 @@ class InputBox extends Component {
         };
     }
 
-
     handleChange = (e) => {
-        // var text = event.target.value;
-        // this.setState({items: text});
-        // console.log(text);
         this.setState({ [e.target.name]: e.target.value });
+    };
+
+    setApptTime = (e) => {
+        var dateTime = new Date(e.toDate());
+        dateTime = moment(dateTime).format("YYYY-MM-DD HH:mm:ss");
+        this.setState({ ['dueDate']: dateTime });
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // // var text = this.state.text;
-        // // this.setState({text: '', items: text});
-        // const form = event.target;
-        // const data = new FormData(form);
-        //
-        // var inputValues= {};
-        // for (let name of data.keys()) {
-        //     const input = form.elements[name];
-        //     inputValues[name] = input.value;
-        // }
-        //
-        // this.setState({ items: inputValues });
         this.setState({isReadyToSubmit: true});
         this.addTodo();
     };
 
     addTodo = () => {
         const { title, description, dueDate } = this.state;
-        fetch(`api/add?title=${title}&description=${description}&dueDate=${dueDate}&done=0`)
+        fetch(`api/add?title=${title}&description=${description}&dueDate=${dueDate}&done=false`)
             .then(this.getTodos)
             .catch(err => console.log(err))
     };
 
     render() {
         let { title, description, dueDate, isReadyToSubmit } = this.state;
+        let date = new Date();
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -81,13 +76,13 @@ class InputBox extends Component {
                                 <div className="field">
                                     <label className="label">Due date</label>
                                     <div className="control">
-                                        <input
-                                            value={dueDate}
-                                            className="input"
-                                            name="dueDate"
-                                            type="date"
-                                            placeholder="dueDate"
-                                            onChange={this.handleChange.bind(this)}
+                                        <Datetime
+                                          className="input"
+                                          value={date}
+                                          name="dueDate"
+                                          onChange={this.setApptTime}
+                                          dateFormat="YYYY-MM-D"
+                                          timeFormat="h:mm:ss"
                                         />
                                     </div>
                                 </div>

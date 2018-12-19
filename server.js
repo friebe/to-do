@@ -4,7 +4,7 @@ const app = express();
 const mysql = require('mysql');
 const config = require('./server/config/config');
 const { getIndex } = require('./server/routes/index');
-const { getTodo, addTodo, deleteTodo} = require('./server/routes/todo');
+const { getTodo, addTodo, deleteTodo, updateStatusTodo} = require('./server/routes/todo');
 
 const db =  mysql.createConnection({
     host: config.database.host,
@@ -23,10 +23,11 @@ global.db = db;
 app.use(cors());
 
 //routes (endpoints)
-app.get('/', getIndex);
+app.get('/api/', getIndex);
 app.get('/api/todo', getTodo);
 app.get('/api/add', addTodo);
 app.get('/api/delete', deleteTodo);
+app.get('/api/upddateStatus', updateStatusTodo);
 
 
 app.listen(config.app.port, () => {
