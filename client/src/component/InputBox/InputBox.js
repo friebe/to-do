@@ -20,8 +20,8 @@ class InputBox extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    setApptTime = (e) => {
-        var dateTime = new Date(e.toDate());
+    setAppTime = (e) => {
+        let dateTime = new Date(e.toDate());
         dateTime = moment(dateTime).format("YYYY-MM-DD HH:mm:ss");
         this.setState({ ['dueDate']: dateTime });
     };
@@ -80,7 +80,7 @@ class InputBox extends Component {
                                           className="input"
                                           value={date}
                                           name="dueDate"
-                                          onChange={this.setApptTime}
+                                          onChange={this.setAppTime}
                                           dateFormat="YYYY-MM-D"
                                           timeFormat="h:mm:ss"
                                         />

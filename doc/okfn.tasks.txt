@@ -9,6 +9,3 @@ Todo
 7. API (PUT,GET,POST, DELETE)
 
 => CRUD
-
-https://github.com/ademilter/simple-react-todo-app-with-api
-https://github.com/achowba/node-mysql-crud-app
