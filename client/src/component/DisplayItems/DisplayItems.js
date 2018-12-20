@@ -69,7 +69,7 @@ class DisplayItems extends Component {
                             <div className="card my-card">
                                 <header className="card-header">
                                     <p className="card-header-title">
-                                        Title: {todo.title} Description: {todo.description}
+                                        Title: {todo.title}
                                     </p>
                                     <a onClick={this.deleteTodo} className="card-header-icon"
                                        aria-label="more options" data-id={todo.id}>delete</a>

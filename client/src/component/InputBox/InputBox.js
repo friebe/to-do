@@ -8,6 +8,7 @@ class InputBox extends Component {
 
     constructor() {
         super();
+
         this.state = {
             title: '',
             description: '',
@@ -80,7 +81,7 @@ class InputBox extends Component {
                                           className="input"
                                           value={date}
                                           name="dueDate"
-                                          onChange={this.setAppTime}
+                                          onChange={this.setAppTime.bind(this)}
                                           dateFormat="YYYY-MM-D"
                                           timeFormat="h:mm:ss"
                                         />
